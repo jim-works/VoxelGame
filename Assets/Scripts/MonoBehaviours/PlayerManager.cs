@@ -8,6 +8,7 @@ public class PlayerManager : NetworkBehaviour
     public static PlayerManager singleton;
     public Entity Player;
     public InventoryUI inventoryUI;
+    public ChatPanelUI chatPanelUI;
     public CloseableUIPanel pauseMenu;
     public GameObject blockHighlight;
     public WorldManager worldManager;
@@ -56,13 +57,24 @@ public class PlayerManager : NetworkBehaviour
         blockHighlight.transform.position = hit.coords;
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (inventoryUI.Open)
+            if (!inventoryUI.Open)
             {
                 inventoryUI.display(Player.inventory);
             }
             else
             {
                 inventoryUI.close();
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            if (!chatPanelUI.Open)
+            {
+                chatPanelUI.open();
+            }
+            else
+            {
+                chatPanelUI.close();
             }
         }
         if (Input.GetMouseButtonDown(0))

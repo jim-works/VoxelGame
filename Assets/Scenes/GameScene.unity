@@ -2007,8 +2007,8 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   player: {fileID: 0}
-  LoadDist: 6
-  UnloadDist: 8
+  LoadDist: 12
+  UnloadDist: 14
   toLoad: 0
   saveInterval: 10
   chunkLoadInterval: 1
@@ -3975,6 +3975,7 @@ MonoBehaviour:
   syncInterval: 0.1
   Player: {fileID: 0}
   inventoryUI: {fileID: 779090497}
+  chatPanelUI: {fileID: 449383629}
   pauseMenu: {fileID: 780643656}
   blockHighlight: {fileID: 867433249}
   worldManager: {fileID: 856809223}

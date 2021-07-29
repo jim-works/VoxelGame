@@ -16,15 +16,12 @@ public class InventoryUI : CloseableUIPanel
     private Pool<GameObject> slots;
     private Inventory displaying;
 
-    public void Awake()
-    {
-        if (items == null) items = Pool<GameObject>.createGameObjectPool(ItemImagePrefab);
-        if (slots == null) slots = Pool<GameObject>.createGameObjectPool(SlotPrefab);
-    }
-
     public void display(Inventory inventory)
     {
+        Debug.Log("display");
         open();
+        if (items == null) items = Pool<GameObject>.createGameObjectPool(ItemImagePrefab);
+        if (slots == null) slots = Pool<GameObject>.createGameObjectPool(SlotPrefab);
         displaying = inventory;
         InventoryScrollView.SetActive(true);
         float panelWidth = InventoryScrollView.GetComponent<RectTransform>().sizeDelta.x;
@@ -53,7 +50,10 @@ public class InventoryUI : CloseableUIPanel
     }
     public override void close()
     {
+        Debug.Log("close");
         base.close();
+        if (items == null) items = Pool<GameObject>.createGameObjectPool(ItemImagePrefab);
+        if (slots == null) slots = Pool<GameObject>.createGameObjectPool(SlotPrefab);
         foreach (GameObject g in items.objects)
         {
             g.SetActive(false);
